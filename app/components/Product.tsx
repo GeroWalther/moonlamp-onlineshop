@@ -9,9 +9,20 @@ import image1 from '@/public/productimage1.jpeg';
 import image2 from '@/public/productimage2.jpeg';
 import image3 from '@/public/productimage3.jpeg';
 import image4 from '@/public/productimage4.jpeg';
+import AddToCartButton from './UI/AddToCartButton';
+import AddToWishList from './UI/AddToWishListButton';
+import { ProductType } from '@/types/productTypes';
 
-const Products = () => {
+const Products = ({
+  name,
+  image,
+  unit_amount,
+  id,
+  description,
+  quantity,
+}: ProductType) => {
   const [currImg, setCurrImg] = useState(0);
+  const productData = { name, image, unit_amount, id, description, quantity };
   const productImgs = [image1, image2, image3, image4];
 
   return (
@@ -79,6 +90,10 @@ const Products = () => {
             Our customers love the moonlamp, hence it got a 5 star rating. Order
             yours now!
           </p>
+          <div className='flex justify-center items-center gap-5'>
+            <AddToCartButton {...productData} />
+            <AddToWishList />
+          </div>
         </div>
       </div>
     </section>

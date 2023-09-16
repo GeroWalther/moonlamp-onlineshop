@@ -2,6 +2,8 @@
 import { useState } from 'react';
 
 import Image from 'next/image';
+import Cart from './Cart';
+import { useCartStore } from '@/store/useCartStore';
 
 import logo from '@/public/moonlamplogo2.png';
 
@@ -12,6 +14,8 @@ import Link from 'next/link';
 
 export const Navbar = () => {
   const [openMobileMenu, setMobileMenu] = useState(false);
+  const cartStore = useCartStore();
+
   function mobileMenuHandler() {
     setMobileMenu((openMobileMenu) => !openMobileMenu);
   }
@@ -39,8 +43,19 @@ export const Navbar = () => {
           </li>
         </ul>
         <div className='flex gap-4 items-center text-dark ml-auto md:ml-0'>
-          <div>
+          <div
+            onClick={() => {
+              cartStore.toggleCart();
+            }}
+            className='cursor-pointer relative'>
             <BsCart4 size={20} />
+            {cartStore.cart.length > 0 && (
+              <span className='text-red-700 text-md font-semibold w-4 h-4 rounded-full absolute right-3 bottom-4 felx items-center justify-center'>
+                {cartStore.cart
+                  .map((e) => e.quantity)
+                  .reduce((acc: any, sum: any) => acc + sum, 0)}
+              </span>
+            )}
           </div>
           <div>
             <BsFillBagHeartFill size={20} />
@@ -50,6 +65,7 @@ export const Navbar = () => {
           {!openMobileMenu ? <FiMenu size={25} /> : <MdClose size={25} />}
         </div>
       </div>
+      {!cartStore.isOpen && <Cart />}
     </nav>
   );
 };

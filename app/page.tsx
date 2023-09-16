@@ -1,16 +1,25 @@
-import React from 'react';
-import Features from './components/UI/Features';
-import Hero from './components/UI/Hero';
-import Parallex from './components/UI/Parallex';
-import Product from './components/UI/Product';
+import Features from './components/Features';
+import Hero from './components/Hero';
+import Parallex from './components/Parallex';
+import Product from './components/Product';
+import { FetchProducts } from '@/utils/fetchStripeProducts';
+import FAQComponent from './components/FAQ';
+import Contact from './components/Contact';
 
-const Home = () => {
+const Home = async () => {
+  const products = await FetchProducts();
   return (
     <>
       <Hero />
       <Features />
       <Parallex />
-      <Product />
+      <>
+        {products.map((prod) => (
+          <Product {...prod} key={prod.id} />
+        ))}
+      </>
+      <FAQComponent />
+      <Contact />
     </>
   );
 };

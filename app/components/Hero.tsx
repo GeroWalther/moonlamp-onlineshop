@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import heroImg from '@/public/moonlamphero.png';
+import PrimaryBtn from './UI/reusable/PrimaryBtn';
 
 function Hero() {
   return (
@@ -17,9 +18,7 @@ function Hero() {
             <button className='py-2 px-5 rounded-xl text-stone-600 underline'>
               More Info
             </button>
-            <button className='bg-dark py-2 px-5 rounded-xl text-stone-200 hover:bg-primary transition-all duration-500'>
-              Buy Now
-            </button>
+            <PrimaryBtn>Buy Now</PrimaryBtn>
           </div>
         </div>
         <div className='flex lg:justify-end justify-center items-center'>
