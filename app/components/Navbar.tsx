@@ -65,7 +65,7 @@ export const Navbar = () => {
           {!openMobileMenu ? <FiMenu size={25} /> : <MdClose size={25} />}
         </div>
       </div>
-      {!cartStore.isOpen && <Cart />}
+      {cartStore.isOpen && <Cart />}
     </nav>
   );
 };
