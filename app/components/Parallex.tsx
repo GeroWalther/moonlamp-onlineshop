@@ -11,7 +11,9 @@ const Parallex = () => {
           type='email'
         />
         <div>
-          <button className='flex items-center py-[10px] px-[26px] rounded-lg font-medium md:text-lg text-stone-100 bg-dark whitespace-nowrap flex-1 w-fit'>
+          <button
+            className='flex 
+          md:py-[10px] md:px-[26px]  items-center py-[5px] px-[13px] rounded-lg font-medium md:text-lg text-stone-100 bg-dark whitespace-nowrap flex-1 w-fit'>
             Subscribe
           </button>
         </div>

@@ -7,7 +7,7 @@ import { AiOutlineCheck, AiOutlineBulb, AiOutlineHeart } from 'react-icons/ai';
 
 function Features() {
   return (
-    <section className='py-5 bg-stone-50'>
+    <section id='features' className='py-5 bg-stone-50'>
       <div className='w-[89%] m-auto max-w-[1400px] grid md:grid-cols-3 grid-cols-1 items-center justify-center gap-5'>
         <div>
           <ul className='space-y-10'>

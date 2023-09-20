@@ -26,7 +26,7 @@ const Products = ({
   const productImgs = [image1, image2, image3, image4];
 
   return (
-    <section className='py-20'>
+    <section id='shop' className='py-20'>
       <div className='w-[89%] m-auto max-w-[1400px] grid grid-cols-1 md:grid-cols-2 items-center gap-10'>
         {/* LEFT SIDE */}
         <div className='flex gap-4 items-center'>
