@@ -18,7 +18,7 @@ export default function AddToCartButton({
         onClick={() =>
           cartStore.addToCart({ id, image, unit_amount, quantity, name })
         }>
-        Add to Cart
+        To Cart
       </PrimaryBtn>
     </>
   );

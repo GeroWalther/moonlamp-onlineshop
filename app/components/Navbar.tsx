@@ -74,7 +74,7 @@ export const Navbar = () => {
           <li>
             <Link
               onClick={(event) => {
-                scrollToAnchorWithOffset(event, 60);
+                scrollToAnchorWithOffset(event);
               }}
               href={'#shop'}>
               Shop
@@ -83,7 +83,7 @@ export const Navbar = () => {
           <li>
             <Link
               onClick={(event) => {
-                scrollToAnchorWithOffset(event, 60);
+                scrollToAnchorWithOffset(event);
               }}
               href={'#features'}>
               Features
@@ -92,7 +92,7 @@ export const Navbar = () => {
           <li>
             <Link
               onClick={(event) => {
-                scrollToAnchorWithOffset(event, 60);
+                scrollToAnchorWithOffset(event);
               }}
               href={'#faq'}>
               FAQ
@@ -101,7 +101,7 @@ export const Navbar = () => {
           <li>
             <Link
               onClick={(event) => {
-                scrollToAnchorWithOffset(event, 60);
+                scrollToAnchorWithOffset(event);
               }}
               href={'#contact'}>
               Contact
