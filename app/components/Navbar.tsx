@@ -84,7 +84,7 @@ export const Navbar = () => {
               onClick={(event) => {
                 scrollToAnchorWithOffset(event);
               }}
-              href={'/'}>
+              href={'#shop'}>
               Shop
             </Link>
           </li>

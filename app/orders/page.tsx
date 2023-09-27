@@ -51,7 +51,7 @@ function OrdersPage() {
   }
 
   return (
-    <div className='w-[89%] m-auto flex flex-col gap-3 pb-20'>
+    <div className='w-[89%] m-auto flex flex-col gap-3 pb-20 h-screen'>
       <div className='text-center my-10'>
         <h2 className='font-bold text-2xl text-primary uppercase'>
           Hello {user.username}!

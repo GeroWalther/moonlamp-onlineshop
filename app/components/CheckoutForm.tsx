@@ -8,6 +8,7 @@ import {
 } from '@stripe/react-stripe-js';
 
 import { useCartStore } from '@/store/useCartStore';
+import formatPrice from '@/utils/formatPrice';
 
 const CheckoutForm = ({ clientSecret }: { clientSecret: string }) => {
   const stripe = useStripe();
@@ -82,7 +83,9 @@ const CheckoutForm = ({ clientSecret }: { clientSecret: string }) => {
     <form className='text-gray-600' onSubmit={handleSubmit} id='payment-form'>
       {!elements && <p>Testing</p>}
       <PaymentElement id='payment-element' options={{ layout: 'tabs' }} />
-      <h1 className='py-4 text-small font-bold'>Total: {formattedPrice}</h1>
+      <h1 className='py-4 text-small font-bold'>
+        Total: {formatPrice(formattedPrice)}
+      </h1>
       <button
         className={`py-2 mt-4 w-full bg-primary rounded-md text-white disabled:opacity-25`}
         id='submit'

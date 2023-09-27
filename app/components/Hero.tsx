@@ -1,8 +1,22 @@
+'use client';
 import Image from 'next/image';
 import heroImg from '@/public/moonlamphero.png';
 import PrimaryBtn from './UI/reusable/PrimaryBtn';
-
+import Link from 'next/link';
 function Hero() {
+  const scrollToAnchorWithOffset = (event: any, offset: number = 120) => {
+    event.preventDefault();
+    const targetId = event.target.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const offsetTop = targetElement.offsetTop - offset;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <div className='bg-background py-10'>
       <div className='w-[89%] m-auto grid lg:grid-cols-2 grid-cols-1 items-center max-w-[1400px] gap-20'>
@@ -15,10 +29,22 @@ function Hero() {
             donation. We love to give back to the community.
           </p>
           <div className='flex gap-5 mt-8'>
-            <button className='py-2 px-5 rounded-xl text-stone-600 underline'>
+            <Link
+              className='py-2 px-5 rounded-xl text-stone-600 underline'
+              onClick={(event) => {
+                scrollToAnchorWithOffset(event);
+              }}
+              href={'#features'}>
               More Info
-            </button>
-            <PrimaryBtn>Buy Now</PrimaryBtn>
+            </Link>
+            <Link
+              className='bg-dark py-2 px-5 rounded-xl text-stone-200 hover:bg-primary transition-all duration-500 text-base'
+              onClick={(event) => {
+                scrollToAnchorWithOffset(event);
+              }}
+              href={'#shop'}>
+              Buy Now
+            </Link>
           </div>
         </div>
         <div className='flex lg:justify-end justify-center items-center'>
