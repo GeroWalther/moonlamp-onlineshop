@@ -2,20 +2,28 @@
 import { useState, useEffect } from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import Cart from './Cart';
 import { useCartStore } from '@/store/useCartStore';
 
 import logo from '@/public/moonlamplogo2.png';
 
+import { UserButton, useUser } from '@clerk/nextjs';
+
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
-import { BsCart4, BsFillBagHeartFill } from 'react-icons/bs';
-import Link from 'next/link';
+import {
+  AiOutlineShoppingCart,
+  AiOutlineHeart,
+  AiOutlineUser,
+} from 'react-icons/ai';
 
 export const Navbar = () => {
   const [openMobileMenu, setMobileMenu] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const cartStore = useCartStore();
+
+  const { isSignedIn, user } = useUser();
 
   function mobileMenuHandler() {
     setMobileMenu((openMobileMenu) => !openMobileMenu);
@@ -64,7 +72,7 @@ export const Navbar = () => {
         isScrolling ? 'fixed top-0 shadow-md z-10' : 'relative'
       }`}>
       <div className='w-[89%] m-auto flex justify-between items-center max-width-[1400px]'>
-        <Image src={logo} width={200} height={200} alt='logo' />
+        <Image src={logo} width={150} height={150} alt='logo' />
         <ul
           className={`md:flex items-center gap-8 md:static absolute text-dark  ${
             openMobileMenu
@@ -76,7 +84,7 @@ export const Navbar = () => {
               onClick={(event) => {
                 scrollToAnchorWithOffset(event);
               }}
-              href={'#shop'}>
+              href={'/'}>
               Shop
             </Link>
           </li>
@@ -107,6 +115,11 @@ export const Navbar = () => {
               Contact
             </Link>
           </li>
+          <li>
+            <Link onClick={(event) => {}} href={'/orders'}>
+              My Orders
+            </Link>
+          </li>
         </ul>
         <div className='flex gap-4 items-center text-dark ml-auto md:ml-0'>
           <div
@@ -114,7 +127,7 @@ export const Navbar = () => {
               cartStore.toggleCart();
             }}
             className='cursor-pointer relative'>
-            <BsCart4 size={20} />
+            <AiOutlineShoppingCart size={20} />
             {cartStore.cart.length > 0 && (
               <span className='text-red-700 text-md font-semibold w-4 h-4 rounded-full absolute right-3 bottom-4 felx items-center justify-center'>
                 {cartStore.cart
@@ -123,9 +136,18 @@ export const Navbar = () => {
               </span>
             )}
           </div>
-          <div>
-            <BsFillBagHeartFill size={20} />
-          </div>
+          {/* <div>
+            <AiOutlineHeart size={20} />
+          </div> */}
+          {!isSignedIn ? (
+            <Link href={'/sign-in'}>
+              <AiOutlineUser size={25} />
+            </Link>
+          ) : (
+            <div>
+              <UserButton />
+            </div>
+          )}
         </div>
         <div className='md:hidden ml-4' onClick={mobileMenuHandler}>
           {!openMobileMenu ? <FiMenu size={25} /> : <MdClose size={25} />}

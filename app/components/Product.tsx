@@ -10,7 +10,7 @@ import image2 from '@/public/productimage2.jpeg';
 import image3 from '@/public/productimage3.jpeg';
 import image4 from '@/public/productimage4.jpeg';
 import AddToCartButton from './UI/AddToCartButton';
-import AddToWishList from './UI/AddToWishListButton';
+// import AddToWishList from './UI/AddToWishListButton';
 import { ProductType } from '@/types/productTypes';
 
 const Products = ({
@@ -92,7 +92,7 @@ const Products = ({
           </p>
           <div className='flex justify-center items-center gap-5'>
             <AddToCartButton {...productData} />
-            <AddToWishList />
+            {/* <AddToWishList /> */}
           </div>
         </div>
       </div>
