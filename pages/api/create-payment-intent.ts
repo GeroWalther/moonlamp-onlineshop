@@ -31,7 +31,12 @@ const manageStripePaymentIntent = async (
   });
 };
 
-const manageOrderInDB = async (paymentIntent, userId, total, items) => {
+const manageOrderInDB = async (
+  paymentIntent: any,
+  userId: any,
+  total: any,
+  items: any
+) => {
   const existingOrder = await prisma.orders.findUnique({
     where: { paymentIntentId: paymentIntent.id },
   });
